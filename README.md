@@ -42,6 +42,8 @@ Article text goes here.
 
 The homepage, directory, blog, sitemap, feed, and SEO metadata update automatically when content is published. Edit on GitHub and commit to the publishing branch to trigger a Pages build.
 
+The empty preview is marked `noindex` automatically. That tag disappears when the first drama or blog article is published, so search engines are invited to index the site when it has substantive content.
+
 ## Local preview
 
 With Ruby and Bundler installed, run `bundle install` and `bundle exec jekyll serve`. GitHub Pages builds the same Jekyll files without a local installation.
