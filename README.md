@@ -4,12 +4,13 @@ A minimal directory and blog for GitHub Pages. Jekyll turns Markdown entries int
 
 ## Publishing content
 
-Add a series in `_series/slug.md` with this front matter:
+Add a drama in `_dramas/slug.md` with this front matter:
 
 ```yaml
 ---
-title: Series title
-description: One factual sentence about the series.
+title: Drama title
+description: One factual sentence about the drama.
+format: Series # or Film
 creator: Creator or studio
 genre: [Drama, Science fiction]
 language: English
@@ -17,15 +18,15 @@ release_year: 2026
 status: Ongoing
 episodes: 8
 platform: Official platform name
-watch_url: https://official.example/series
-source_url: https://official.example/series/about
+watch_url: https://official.example/drama
+source_url: https://official.example/drama/about
 last_checked: 2026-11-08
 ---
 
-An original synopsis and useful viewing notes go here. Verify facts against the official source.
+An original synopsis and useful viewing notes go here. Verify facts against the official source. For a standalone film, set `format: Film` and omit `episodes` and `status` if they do not apply.
 ```
 
-Only add `review`, `review_author`, and `review_date` if someone has actually watched and written an original review. Do not add ratings or review markup to unreviewed listings.
+Only add `review`, `review_author`, and `review_date` if someone has actually watched and written an original editorial review. Do not add ratings or review markup to unreviewed listings. The site has no public review submission system.
 
 Add blog articles in `_posts/YYYY-MM-DD-slug.md`:
 

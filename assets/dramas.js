@@ -1,8 +1,8 @@
 (() => {
-  const search = document.getElementById('series-search');
+  const search = document.getElementById('drama-search');
   const genre = document.getElementById('genre-filter');
-  const cards = [...document.querySelectorAll('.series-item')];
-  const count = document.getElementById('series-count');
+  const cards = [...document.querySelectorAll('.drama-item')];
+  const count = document.getElementById('drama-count');
   const noResults = document.getElementById('no-results');
   if (!search || !genre || !count || !noResults) return;
 
@@ -17,7 +17,7 @@
       card.hidden = !show;
       if (show) visible += 1;
     }
-    count.textContent = `${visible} series`;
+    count.textContent = `${visible} dramas`;
     noResults.hidden = visible !== 0;
   }
 

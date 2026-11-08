@@ -1,0 +1,8 @@
+<article class="series-card h-100">
+  <div class="series-card-body">
+    <p class="eyebrow mb-2">{{ include.drama.format | default: 'AI drama' | escape }}{% if include.drama.genre %} / {{ include.drama.genre | join: ' / ' | escape }}{% endif %}</p>
+    <h3 class="h5 mb-2"><a class="stretched-link text-decoration-none" href="{{ include.drama.url | relative_url }}">{{ include.drama.title | escape }}</a></h3>
+    <p class="text-secondary mb-3">{{ include.drama.description | escape }}</p>
+    <div class="series-meta">{% if include.drama.language %}<span>{{ include.drama.language | escape }}</span>{% endif %}{% if include.drama.release_year %}<span>{{ include.drama.release_year }}</span>{% endif %}{% if include.drama.status %}<span>{{ include.drama.status | escape }}</span>{% endif %}</div>
+  </div>
+</article>

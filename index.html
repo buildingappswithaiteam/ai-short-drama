@@ -1,29 +1,29 @@
 ---
 layout: default
 title: AI Short Drama Directory and Reviews
-description: Browse AI short drama series, find official places to watch, and read independent reviews and articles.
+description: Browse dramas made with AI, find official places to watch, and read independent reviews and articles.
 ---
 <section class="hero row align-items-end g-4">
   <div class="col-lg-9">
     <p class="eyebrow mb-3">A growing index of AI storytelling</p>
     <h1>Find your next<br><em>short drama.</em></h1>
-    <p class="lead text-secondary mt-4 mb-0">Explore AI short drama series in one place, with useful details, official watch links, and considered reviews.</p>
+    <p class="lead text-secondary mt-4 mb-0">Explore dramas made with AI in one place, with useful details, official watch links, and considered reviews.</p>
   </div>
-  <div class="col-lg-3 text-lg-end"><a class="text-link" href="{{ '/series/' | relative_url }}">Browse the directory <span aria-hidden="true">↗</span></a></div>
+  <div class="col-lg-3 text-lg-end"><a class="text-link" href="{{ '/dramas/' | relative_url }}">Browse the directory <span aria-hidden="true">↗</span></a></div>
 </section>
 
-<section class="section-block" aria-labelledby="recent-series">
+<section class="section-block" aria-labelledby="recent-dramas">
   <div class="section-heading d-flex justify-content-between align-items-end gap-3">
-    <div><p class="eyebrow mb-2">Explore</p><h2 id="recent-series">The directory</h2></div>
-    <a href="{{ '/series/' | relative_url }}">View all <span aria-hidden="true">→</span></a>
+    <div><p class="eyebrow mb-2">Explore</p><h2 id="recent-dramas">The directory</h2></div>
+    <a href="{{ '/dramas/' | relative_url }}">View all <span aria-hidden="true">→</span></a>
   </div>
-  {% assign featured_series = site.series | sort: 'title' %}
-  {% if featured_series.size > 0 %}
+  {% assign featured_dramas = site.dramas | sort: 'title' %}
+  {% if featured_dramas.size > 0 %}
   <div class="row g-3">
-    {% for series in featured_series limit: 6 %}<div class="col-md-6 col-lg-4">{% include series-card.html series=series %}</div>{% endfor %}
+    {% for drama in featured_dramas limit: 6 %}<div class="col-md-6 col-lg-4">{% include drama-card.html drama=drama %}</div>{% endfor %}
   </div>
   {% else %}
-  <div class="empty-state"><h3 class="h5">The first series are on their way.</h3><p class="mb-0">We are building a carefully checked index. Visit the blog to see how the directory works.</p></div>
+  <div class="empty-state"><h3 class="h5">The first dramas are on their way.</h3><p class="mb-0">We are building a carefully checked index. Visit the blog to see how the directory works.</p></div>
   {% endif %}
 </section>
 

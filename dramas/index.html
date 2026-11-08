@@ -1,0 +1,29 @@
+---
+layout: default
+title: Browse AI Short Dramas
+description: Explore dramas made with AI by title, genre, and language. Find series and standalone films with official watch links when available.
+permalink: /dramas/
+---
+<header class="page-intro">
+  <p class="eyebrow">Directory</p>
+  <h1>AI short dramas</h1>
+  <p class="lead text-secondary">A clear, growing guide to scripted series and films made with AI.</p>
+</header>
+
+{% assign sorted_dramas = site.dramas | sort: 'title' %}
+{% if sorted_dramas.size > 0 %}
+<div class="filter-bar row g-3 align-items-end" role="search" aria-label="Filter dramas">
+  <div class="col-md-7"><label for="drama-search" class="form-label">Search dramas</label><input id="drama-search" class="form-control" type="search" placeholder="Search by title, creator, or genre" autocomplete="off"></div>
+  <div class="col-md-5"><label for="genre-filter" class="form-label">Genre</label><select id="genre-filter" class="form-select"><option value="">All genres</option>{% assign genres = site.dramas | map: 'genre' | join: ',' | split: ',' | uniq | sort %}{% for genre in genres %}{% assign clean_genre = genre | strip %}{% if clean_genre != '' %}<option value="{{ clean_genre | downcase | escape }}">{{ clean_genre | escape }}</option>{% endif %}{% endfor %}</select></div>
+</div>
+<p id="drama-count" class="small text-secondary mt-3" aria-live="polite">{{ sorted_dramas.size }} dramas</p>
+<div id="drama-grid" class="row g-3 mt-1">
+  {% for drama in sorted_dramas %}
+  <div class="col-md-6 col-lg-4 drama-item" data-search="{{ drama.title | append: ' ' | append: drama.creator | append: ' ' | append: drama.genre | append: ' ' | append: drama.language | downcase | escape }}" data-genres="{{ drama.genre | join: ',' | downcase | escape }}">{% include drama-card.html drama=drama %}</div>
+  {% endfor %}
+</div>
+<p id="no-results" class="empty-state mt-4" hidden>No dramas match those filters. Try another search.</p>
+<script src="{{ '/assets/dramas.js' | relative_url }}" defer></script>
+{% else %}
+<div class="empty-state"><h2 class="h5">The directory is being prepared.</h2><p class="mb-0">The first checked dramas will appear here soon.</p></div>
+{% endif %}

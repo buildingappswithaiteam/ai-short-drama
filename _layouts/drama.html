@@ -1,11 +1,11 @@
 ---
 layout: default
 ---
-<nav aria-label="Breadcrumb" class="mb-4"><ol class="breadcrumb small"><li class="breadcrumb-item"><a href="{{ '/' | relative_url }}">Home</a></li><li class="breadcrumb-item"><a href="{{ '/series/' | relative_url }}">Directory</a></li><li class="breadcrumb-item active" aria-current="page">{{ page.title | escape }}</li></ol></nav>
+<nav aria-label="Breadcrumb" class="mb-4"><ol class="breadcrumb small"><li class="breadcrumb-item"><a href="{{ '/' | relative_url }}">Home</a></li><li class="breadcrumb-item"><a href="{{ '/dramas/' | relative_url }}">Directory</a></li><li class="breadcrumb-item active" aria-current="page">{{ page.title | escape }}</li></ol></nav>
 <article class="detail-page">
   <div class="row g-5">
     <div class="col-lg-8">
-      <p class="eyebrow">AI short drama series</p>
+      <p class="eyebrow">{{ page.format | default: 'AI short drama' | escape }}</p>
       <h1>{{ page.title | escape }}</h1>
       {% if page.description %}<p class="lead text-secondary">{{ page.description | escape }}</p>{% endif %}
       <div class="prose">{{ content }}</div>
@@ -17,10 +17,11 @@ layout: default
       </section>
       {% endif %}
     </div>
-    <aside class="col-lg-4" aria-label="Series details">
+    <aside class="col-lg-4" aria-label="Drama details">
       <div class="details-panel">
-        <h2 class="h6 text-uppercase">Series details</h2>
+        <h2 class="h6 text-uppercase">Drama details</h2>
         <dl class="details-list">
+          {% if page.format %}<dt>Format</dt><dd>{{ page.format | escape }}</dd>{% endif %}
           {% if page.creator %}<dt>Creator</dt><dd>{{ page.creator | escape }}</dd>{% endif %}
           {% if page.genre %}<dt>Genre</dt><dd>{{ page.genre | join: ', ' | escape }}</dd>{% endif %}
           {% if page.language %}<dt>Language</dt><dd>{{ page.language | escape }}</dd>{% endif %}
@@ -31,7 +32,7 @@ layout: default
           {% if page.last_checked %}<dt>Last checked</dt><dd><time datetime="{{ page.last_checked | date: '%Y-%m-%d' }}">{{ page.last_checked | date: '%B %-d, %Y' }}</time></dd>{% endif %}
         </dl>
         {% if page.watch_url %}<a class="btn btn-dark w-100" href="{{ page.watch_url | escape }}" target="_blank" rel="noopener noreferrer">Watch on official site <span aria-hidden="true">↗</span></a>{% endif %}
-        {% if page.source_url %}<p class="small mt-3 mb-0"><a href="{{ page.source_url | escape }}" target="_blank" rel="noopener noreferrer">Source for series details <span aria-hidden="true">↗</span></a></p>{% endif %}
+        {% if page.source_url %}<p class="small mt-3 mb-0"><a href="{{ page.source_url | escape }}" target="_blank" rel="noopener noreferrer">Source for drama details <span aria-hidden="true">↗</span></a></p>{% endif %}
       </div>
     </aside>
   </div>
@@ -39,7 +40,7 @@ layout: default
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "CreativeWorkSeries",
+  "@type": {% if page.format == 'Film' %}"Movie"{% else %}"CreativeWorkSeries"{% endif %},
   "name": {{ page.title | jsonify }},
   "url": {{ page.url | absolute_url | jsonify }},
   "description": {{ page.description | jsonify }}{% if page.creator %},

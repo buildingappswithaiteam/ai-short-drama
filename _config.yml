@@ -1,6 +1,6 @@
 title: AI Short Drama
-tagline: Find AI short drama series worth watching
-description: An independent directory of AI short drama series, with clear details, official watch links, and thoughtful reviews.
+tagline: Find AI short dramas worth watching
+description: An independent directory of dramas made with AI, with clear details, official watch links, and thoughtful reviews.
 url: https://ai-short-drama.com
 baseurl: ""
 lang: en
@@ -8,15 +8,15 @@ timezone: Asia/Kolkata
 markdown: kramdown
 permalink: /blog/:title/
 collections:
-  series:
+  dramas:
     output: true
-    permalink: /series/:name/
+    permalink: /dramas/:name/
 defaults:
   - scope:
       path: ""
-      type: series
+      type: dramas
     values:
-      layout: series
+      layout: drama
   - scope:
       path: ""
       type: posts
