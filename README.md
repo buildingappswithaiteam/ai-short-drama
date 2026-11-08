@@ -50,4 +50,4 @@ With Ruby and Bundler installed, run `bundle install` and `bundle exec jekyll se
 
 ## Site settings
 
-`_config.yml` contains the public URL and metadata. The production domain is set to `https://ai-short-drama.com`; configure the custom domain in GitHub Pages settings and update DNS before launch. The site uses the `jekyll-seo-tag`, `jekyll-sitemap`, and `jekyll-feed` plugins supported by GitHub Pages.
+`_config.yml` contains the public URL and metadata. GitHub Pages and Hostinger DNS are configured for `ai-short-drama.com`. The site uses the `jekyll-seo-tag`, `jekyll-sitemap`, and `jekyll-feed` plugins supported by GitHub Pages.
