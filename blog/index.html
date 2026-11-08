@@ -1,0 +1,17 @@
+---
+layout: default
+title: AI Short Drama Blog
+description: Read independent articles, guides, and reviews about AI short drama and the people making it.
+permalink: /blog/
+---
+<header class="page-intro"><p class="eyebrow">Journal</p><h1>The blog</h1><p class="lead text-secondary">Notes on the stories, creators, and craft behind AI short drama.</p></header>
+{% if site.posts.size > 0 %}
+<div class="article-list">
+  {% for post in site.posts %}
+  <article class="article-list-item row g-3">
+    <div class="col-md-3"><time class="small text-secondary" datetime="{{ post.date | date: '%Y-%m-%d' }}">{{ post.date | date: '%B %-d, %Y' }}</time></div>
+    <div class="col-md-9"><h2 class="h4"><a href="{{ post.url | relative_url }}">{{ post.title | escape }}</a></h2><p class="text-secondary mb-0">{{ post.description | escape }}</p></div>
+  </article>
+  {% endfor %}
+</div>
+{% else %}<div class="empty-state"><p class="mb-0">Our first article is coming soon.</p></div>{% endif %}

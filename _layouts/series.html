@@ -1,0 +1,52 @@
+---
+layout: default
+---
+<nav aria-label="Breadcrumb" class="mb-4"><ol class="breadcrumb small"><li class="breadcrumb-item"><a href="{{ '/' | relative_url }}">Home</a></li><li class="breadcrumb-item"><a href="{{ '/series/' | relative_url }}">Directory</a></li><li class="breadcrumb-item active" aria-current="page">{{ page.title | escape }}</li></ol></nav>
+<article class="detail-page">
+  <div class="row g-5">
+    <div class="col-lg-8">
+      <p class="eyebrow">AI short drama series</p>
+      <h1>{{ page.title | escape }}</h1>
+      {% if page.description %}<p class="lead text-secondary">{{ page.description | escape }}</p>{% endif %}
+      <div class="prose">{{ content }}</div>
+      {% if page.review %}
+      <section class="review-section mt-5" aria-labelledby="review-heading">
+        <h2 id="review-heading">Our review</h2>
+        {% if page.review_author %}<p class="small text-secondary">By {{ page.review_author | escape }}{% if page.review_date %} · {{ page.review_date | date: '%B %-d, %Y' }}{% endif %}</p>{% endif %}
+        <p>{{ page.review | escape }}</p>
+      </section>
+      {% endif %}
+    </div>
+    <aside class="col-lg-4" aria-label="Series details">
+      <div class="details-panel">
+        <h2 class="h6 text-uppercase">Series details</h2>
+        <dl class="details-list">
+          {% if page.creator %}<dt>Creator</dt><dd>{{ page.creator | escape }}</dd>{% endif %}
+          {% if page.genre %}<dt>Genre</dt><dd>{{ page.genre | join: ', ' | escape }}</dd>{% endif %}
+          {% if page.language %}<dt>Language</dt><dd>{{ page.language | escape }}</dd>{% endif %}
+          {% if page.release_year %}<dt>Release year</dt><dd>{{ page.release_year }}</dd>{% endif %}
+          {% if page.status %}<dt>Status</dt><dd>{{ page.status | escape }}</dd>{% endif %}
+          {% if page.episodes %}<dt>Episodes</dt><dd>{{ page.episodes }}</dd>{% endif %}
+          {% if page.platform %}<dt>Platform</dt><dd>{{ page.platform | escape }}</dd>{% endif %}
+          {% if page.last_checked %}<dt>Last checked</dt><dd><time datetime="{{ page.last_checked | date: '%Y-%m-%d' }}">{{ page.last_checked | date: '%B %-d, %Y' }}</time></dd>{% endif %}
+        </dl>
+        {% if page.watch_url %}<a class="btn btn-dark w-100" href="{{ page.watch_url | escape }}" target="_blank" rel="noopener noreferrer">Watch on official site <span aria-hidden="true">↗</span></a>{% endif %}
+        {% if page.source_url %}<p class="small mt-3 mb-0"><a href="{{ page.source_url | escape }}" target="_blank" rel="noopener noreferrer">Source for series details <span aria-hidden="true">↗</span></a></p>{% endif %}
+      </div>
+    </aside>
+  </div>
+</article>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "CreativeWorkSeries",
+  "name": {{ page.title | jsonify }},
+  "url": {{ page.url | absolute_url | jsonify }},
+  "description": {{ page.description | jsonify }}{% if page.creator %},
+  "creator": {{ page.creator | jsonify }}{% endif %}{% if page.genre %},
+  "genre": {{ page.genre | jsonify }}{% endif %}{% if page.language %},
+  "inLanguage": {{ page.language | jsonify }}{% endif %}{% if page.release_date %},
+  "datePublished": {{ page.release_date | jsonify }}{% endif %}{% if page.watch_url %},
+  "sameAs": {{ page.watch_url | jsonify }}{% endif %}
+}
+</script>

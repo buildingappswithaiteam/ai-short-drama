@@ -1,0 +1,32 @@
+title: AI Short Drama
+tagline: Find AI short drama series worth watching
+description: An independent directory of AI short drama series, with clear details, official watch links, and thoughtful reviews.
+url: https://ai-short-drama.com
+baseurl: ""
+lang: en
+timezone: Asia/Kolkata
+markdown: kramdown
+permalink: /blog/:title/
+collections:
+  series:
+    output: true
+    permalink: /series/:name/
+defaults:
+  - scope:
+      path: ""
+      type: series
+    values:
+      layout: series
+  - scope:
+      path: ""
+      type: posts
+    values:
+      layout: post
+plugins:
+  - jekyll-seo-tag
+  - jekyll-sitemap
+  - jekyll-feed
+exclude:
+  - README.md
+  - Gemfile
+  - Gemfile.lock

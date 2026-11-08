@@ -1,0 +1,46 @@
+---
+layout: default
+title: AI Short Drama Directory and Reviews
+description: Browse AI short drama series, find official places to watch, and read independent reviews and articles.
+---
+<section class="hero row align-items-end g-4">
+  <div class="col-lg-9">
+    <p class="eyebrow mb-3">A growing index of AI storytelling</p>
+    <h1>Find your next<br><em>short drama.</em></h1>
+    <p class="lead text-secondary mt-4 mb-0">Explore AI short drama series in one place, with useful details, official watch links, and considered reviews.</p>
+  </div>
+  <div class="col-lg-3 text-lg-end"><a class="text-link" href="{{ '/series/' | relative_url }}">Browse the directory <span aria-hidden="true">↗</span></a></div>
+</section>
+
+<section class="section-block" aria-labelledby="recent-series">
+  <div class="section-heading d-flex justify-content-between align-items-end gap-3">
+    <div><p class="eyebrow mb-2">Explore</p><h2 id="recent-series">The directory</h2></div>
+    <a href="{{ '/series/' | relative_url }}">View all <span aria-hidden="true">→</span></a>
+  </div>
+  {% assign featured_series = site.series | sort: 'title' %}
+  {% if featured_series.size > 0 %}
+  <div class="row g-3">
+    {% for series in featured_series limit: 6 %}<div class="col-md-6 col-lg-4">{% include series-card.html series=series %}</div>{% endfor %}
+  </div>
+  {% else %}
+  <div class="empty-state"><h3 class="h5">The first series are on their way.</h3><p class="mb-0">We are building a carefully checked index. Visit the blog to see how the directory works.</p></div>
+  {% endif %}
+</section>
+
+<section class="section-block" aria-labelledby="latest-writing">
+  <div class="section-heading d-flex justify-content-between align-items-end gap-3">
+    <div><p class="eyebrow mb-2">Read</p><h2 id="latest-writing">From the blog</h2></div>
+    <a href="{{ '/blog/' | relative_url }}">View all <span aria-hidden="true">→</span></a>
+  </div>
+  {% if site.posts.size > 0 %}
+  <div class="row g-4">
+    {% for post in site.posts limit: 3 %}
+    <article class="col-md-4">
+      <p class="eyebrow mb-2"><time datetime="{{ post.date | date: '%Y-%m-%d' }}">{{ post.date | date: '%B %-d, %Y' }}</time></p>
+      <h3 class="h5"><a href="{{ post.url | relative_url }}">{{ post.title | escape }}</a></h3>
+      <p class="text-secondary">{{ post.description | escape }}</p>
+    </article>
+    {% endfor %}
+  </div>
+  {% else %}<div class="empty-state"><p class="mb-0">Articles will appear here when published.</p></div>{% endif %}
+</section>
